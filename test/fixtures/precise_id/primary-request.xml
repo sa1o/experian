@@ -27,7 +27,7 @@
           <VendorNumber>P55</VendorNumber>
         </Vendor>
         <Options>
-          <PreciseIDType>21</PreciseIDType>
+          <PreciseIDType>11</PreciseIDType>
         </Options>
       </PreciseIDServer>
     </Products>

@@ -59,7 +59,7 @@ module Experian
 
       def add_options(xml)
         xml.tag!('Options') do
-          xml.tag!('PreciseIDType', "21")
+          xml.tag!('PreciseIDType', "11")
           xml.tag!('ReferenceNumber', "XML PROD OP 19") if @options[:reference_number]
           xml.tag!('DetailRequest', "D") if @options[:detail_request]
           xml.tag!('InquiryChannel', "INTE") if @options[:inquiry_channel]
