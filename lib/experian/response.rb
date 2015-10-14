@@ -3,7 +3,7 @@ require 'rexml/document'
 module Experian
   class Response
 
-      attr_reader :xml
+      attr_reader :xml, :response
 
       def initialize(xml)
         @xml = xml

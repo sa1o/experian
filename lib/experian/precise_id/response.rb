@@ -27,6 +27,10 @@ module Experian
         hash_path(@response,"Products","PreciseIDServer","SessionID")
       end
 
+      def score
+        hash_path(@response,"Products","PreciseIDServer","Summary","PreciseIDScore")
+      end
+
       def initial_decision
         hash_path(@response,"Products","PreciseIDServer","Summary","InitialResults","InitialDecision")
       end
