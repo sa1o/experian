@@ -67,4 +67,11 @@ describe Experian::PreciseId::PrimaryRequest do
     assert_includes request.xml, "<InquiryChannel>INTE</InquiryChannel>"
   end
 
+  it "includes freeze key pin if it's passed in" do
+    request = Experian::PreciseId::PrimaryRequest.new(params.merge({
+      :freeze_key_pin => "1234"
+    }))
+    assert_includes request.xml, "<FreezeKeyPIN>1234</FreezeKeyPIN>"
+  end
+
 end
