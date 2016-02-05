@@ -24,11 +24,12 @@ Gramm- Leach-Bliley (GLB) Act.*
 * Address Update
 * Authentication Services
 * BizID
+* **BusinessIQ**
 * Bullseye
 * Checkpoint - File One Verification Solution
 * Collection Advantage interactive
 * Collection Report
-* **Connect Check (implemented in this gem)**
+* **Connect Check**
 * Credit Profile
 * Custom Solution
 * Cross View
@@ -44,11 +45,13 @@ Gramm- Leach-Bliley (GLB) Act.*
 * Numeric Inquiry
 * Parallel Profile
 * Profile Summary
-* Precise ID
+* **Precise ID**
 * Precise ID Distributed
 * Risk Models
 * Social Search
 * Truvue
+
+** (implemented in this gem) **
 
 ## Installation
 
