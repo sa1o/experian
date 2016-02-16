@@ -9,9 +9,9 @@ module Experian
           add_business_applicant(xml)
           add_business_owner(xml)
 
+          add_addons(xml)
           add_output_type(xml)
           add_vendor(xml)
-          # add_options(xml)
         end
       end
 

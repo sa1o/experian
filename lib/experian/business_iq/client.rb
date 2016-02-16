@@ -4,17 +4,11 @@ module Experian
 
       def get_premier_profile(options = {})
         assert_check_options(options)
-
-        puts PremierRequest.new(options).xml
-
         Response.new(submit_request(PremierRequest.new(options)).body)
       end
 
       def get_list_of_similars(options = {})
         assert_check_options(options)
-
-        puts SimilarsRequest.new(options).xml
-
         Response.new(submit_request(SimilarsRequest.new(options)).body)
       end
 
