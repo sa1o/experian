@@ -13,6 +13,10 @@ module Experian
       Experian.test_mode? ? DB_HOST_TEST : DB_HOST
     end
 
+    def self.get_business_profile(options = {})
+      Client.new.get_business_profile(options)
+    end
+
     def self.get_premier_profile(options = {})
       Client.new.get_premier_profile(options)
     end
