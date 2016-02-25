@@ -2,14 +2,21 @@ module Experian
   module BusinessIq
     class Client < Experian::Client
 
-      def get_business_profile(options = {})
+      def get_profile(options = {})
         assert_check_options(options)
-        Response.new(submit_request(BusinessRequest.new(options)).body)
+        Response.new(submit_request(ProfileRequest.new(options)).body)
+      end
+
+      def get_business_profile(options = {})
+        options[:request_type] = :premier
+        assert_check_options(options)
+        Response.new(submit_request(ProfileRequest.new(options)).body)
       end
 
       def get_premier_profile(options = {})
+        options[:request_type] = :business
         assert_check_options(options)
-        Response.new(submit_request(PremierRequest.new(options)).body)
+        Response.new(submit_request(ProfileRequest.new(options)).body)
       end
 
       def get_list_of_similars(options = {})

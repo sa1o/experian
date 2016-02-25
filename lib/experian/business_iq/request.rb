@@ -27,14 +27,6 @@ module Experian
         end
       end
 
-      def add_addons(xml)
-        if @options[:addons]
-          xml.tag!('AddOns') do
-            xml.tag!('BOP', 'Y') if @options[:addons][:bop]
-          end
-        end
-      end
-
       def add_output_type(xml)
         xml.tag!('OutputType') do
           xml.tag!('XML') do
