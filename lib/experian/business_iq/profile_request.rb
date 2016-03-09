@@ -77,8 +77,12 @@ module Experian
       def add_addons(xml)
         if @options[:addons]
           xml.tag!('AddOns') do
+            xml.tag!('AllReports', 'Y') if @options[:addons][:all_reports]
             xml.tag!('StandAlone', 'Y') if @options[:addons][:stand_alone]
             xml.tag!('BOP', 'Y') if @options[:addons][:bop]
+            xml.tag!('BP', 'Y') if @options[:addons][:bp]
+            xml.tag!('BSUM', 'Y') if @options[:addons][:bsum]
+            xml.tag!('UCC', 'Y') if @options[:addons][:ucc]
             xml.tag!('RiskModelCode', @options[:addons][:risk_model_code]) if @options[:addons][:risk_model_code]
           end
         end
