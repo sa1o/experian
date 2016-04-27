@@ -9,6 +9,7 @@ module Experian
           add_addons(xml)
           add_output_type(xml)
           add_vendor(xml)
+          add_options(xml)
         end
       end
 
@@ -28,6 +29,14 @@ module Experian
             xml.tag!('BP', 'Y') if @options[:addons][:bp]
             xml.tag!('UCC', 'Y') if @options[:addons][:ucc]
             xml.tag!('RiskModelCode', @options[:addons][:risk_model_code]) if @options[:addons][:risk_model_code]
+          end
+        end
+      end
+
+      def add_options(xml)
+        if @options[:options]
+          xml.tag!('Options') do
+            xml.tag!('CustomerName', @options[:options][:customer_name]) if @options[:options][:customer_name]
           end
         end
       end
