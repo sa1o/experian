@@ -18,3 +18,4 @@ tmp
 /.idea
 *.xml
 *.xsd
+lib/testr.rb
