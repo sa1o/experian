@@ -3,10 +3,10 @@ module Experian
     class PrimaryRequest < Request
       
       def add_request_content(xml)
-        xml.tag!('XMLVersion', "5.0")
+        xml.tag!('PIDXMLVersion', '06.00')
         add_subscriber(xml)
         add_applicant(xml)
-        xml.tag!('Verbose', "Y") if @options[:verbose]
+        xml.tag!('Verbose', 'Y') if @options[:verbose]
         add_vendor(xml)
         add_options(xml)
         xml.tag!('IPAddress', @options[:ip_address]) if @options[:ip_address]
@@ -30,6 +30,7 @@ module Experian
           end
           xml.tag!('SSN', @options[:ssn]) if @options[:ssn]
           add_current_address(xml)
+          add_driver_license(xml) if @options[:driver_license] && @options[:driver_license_state]
           add_phone_numebr(xml)
           xml.tag!('DOB', @options[:dob]) if @options[:dob]
           xml.tag!('EmailAddress', @options[:email]) if @options[:email]
@@ -43,6 +44,13 @@ module Experian
           xml.tag!('State', @options[:state])
           xml.tag!('Zip', @options[:zip])
         end if @options[:zip]
+      end
+
+      def add_driver_license(xml)
+        xml.tag!('DriverLicense') do
+          xml.tag!('Number', @options[:driver_license])
+          xml.tag!('State', @options[:driver_license_state])
+        end
       end
 
       def add_phone_numebr(xml)
@@ -59,11 +67,16 @@ module Experian
 
       def add_options(xml)
         xml.tag!('Options') do
-          xml.tag!('FreezeKeyPIN', @options[:freeze_key_pin]) if @options[:freeze_key_pin]
-          xml.tag!('PreciseIDType', "11")
-          xml.tag!('ReferenceNumber', "XML PROD OP 19") if @options[:reference_number]
-          xml.tag!('DetailRequest', "D") if @options[:detail_request]
-          xml.tag!('InquiryChannel', "INTE") if @options[:inquiry_channel]
+          # xml.tag!('FreezeKeyPIN', @options[:freeze_key_pin]) if @options[:freeze_key_pin]
+          # xml.tag!('PreciseIDType', "11")
+          # xml.tag!('ReferenceNumber', "XML PROD OP 19") if @options[:reference_number]
+          # xml.tag!('DetailRequest', "D") if @options[:detail_request]
+          # xml.tag!('InquiryChannel', "INTE") if @options[:inquiry_channel]
+
+          xml.tag!('ReferenceNumber')
+          xml.tag!('ProductOption', '03')
+          xml.tag!('DetailRequest', 'D')
+          xml.tag!('InquiryChannel', 'INTE')
         end
       end
     end
