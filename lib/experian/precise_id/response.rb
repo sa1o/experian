@@ -10,12 +10,12 @@ module Experian
       end
 
       def error_code
-        has_error_section? ? error_section["ErrorCode"] : nil
+        has_error_section? ? error_section['ErrorCode'] : nil
       end
 
       def error_message
         if has_error_section?
-          error_message = error_section["ErrorDescription"]
+          error_message = error_section['ErrorDescription']
         else
           error_message = nil
         end
@@ -24,37 +24,45 @@ module Experian
       end
 
       def session_id
-        hash_path(@response,"Products","PreciseIDServer","SessionID")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'SessionID')
       end
 
       def fpd_score
-        hash_path(@response,"Products","PreciseIDServer","Summary","FPDScore")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Summary', 'Scores', 'FPDScore')
       end
 
       def score
-        hash_path(@response,"Products","PreciseIDServer","Summary","PreciseIDScore")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Summary', 'Scores', 'PreciseIDScore')
       end
 
       def initial_decision
-        hash_path(@response,"Products","PreciseIDServer","Summary","InitialResults","InitialDecision")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Summary', 'InitialDecision')
       end
 
       def final_decision
-        hash_path(@response,"Products","PreciseIDServer","Summary","InitialResults","FinalDecision")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Summary', 'FinalDecision')
       end
 
       def accept_refer_code
-        hash_path(@response,"Products","PreciseIDServer","KBAScore","ScoreSummary","AcceptReferCode")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'KBAScore', 'ScoreSummary', 'AcceptReferCode')
+      end
+
+      def kbas_result_code
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'KBAScore', 'General', 'KBAResultCode')
+      end
+
+      def kbas_result_code_description
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'KBAScore', 'General', 'KBAResultCodeDescription')
       end
 
       def questions
-        questions = hash_path(@response,"Products","PreciseIDServer","KBA","QuestionSet")
+        questions = hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'KBA', 'QuestionSet')
         if questions
           questions.collect do |question|
             {
-              :type => question["QuestionType"].to_i,
-              :text => question["QuestionText"],
-              :choices => question["QuestionSelect"]["QuestionChoice"]
+              type: question['QuestionType'].to_i,
+              text: question['QuestionText'],
+              choices: question['QuestionSelect']['QuestionChoice']
             }
           end
         else
@@ -69,7 +77,7 @@ module Experian
       end
 
       def precise_id_server_section
-        hash_path(@response,"Products","PreciseIDServer")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer')
       end
 
       def has_error_section?
@@ -77,7 +85,7 @@ module Experian
       end
 
       def error_section
-        hash_path(@response,"Products","PreciseIDServer","Error")
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Error')
       end
 
       def hash_path(hash, *path)
