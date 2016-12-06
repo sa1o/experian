@@ -50,7 +50,8 @@ module Experian
 
       def parse_xml_response
         xml = REXML::Document.new(@xml)
-        root = REXML::XPath.first(xml, "//NetConnectResponse")
+        # root = REXML::XPath.first(xml, "//NetConnectResponse")
+        root = REXML::XPath.first(xml, "//Experian")
         if root
           parse_element(root)
         else
