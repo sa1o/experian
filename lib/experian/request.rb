@@ -11,22 +11,34 @@ module Experian
     def build_request
       xml = Builder::XmlMarkup.new(:indent => 2)
       xml.instruct!(:xml, :version => '1.0', :encoding => 'utf-8')
-      xml.tag!("NetConnectRequest",
-        'xmlns' => Experian::XML_NAMESPACE,
-        'xmlns:xsi' => Experian::XML_SCHEMA_INSTANCE,
-        'xsi:schemaLocation' => Experian::XML_SCHEMA_LOCATION) do
+
+      # xml.tag!("NetConnectRequest",
+      #   'xmlns' => Experian::XML_NAMESPACE,
+      #   'xmlns:xsi' => Experian::XML_SCHEMA_INSTANCE,
+      #   'xsi:schemaLocation' => Experian::XML_SCHEMA_LOCATION) do
+      #     yield xml if block_given?
+      # end
+
+      xml.tag!('Experian') do
+        xml.tag!('FraudSolutions') do
           yield xml if block_given?
+        end
       end
     end
 
     def body
-      @body ||= URI.encode_www_form('NETCONNECT_TRANSACTION' => xml)
+      # @body ||= URI.encode_www_form('NETCONNECT_TRANSACTION' => xml)
+      xml
     end
 
     def headers
+      # {
+      #   "Content-Type" => "application/x-www-form-urlencoded",
+      #   "Content-Length" => "#{body.length}"
+      # }
       {
-        "Content-Type" => "application/x-www-form-urlencoded",
-        "Content-Length" => "#{body.length}"
+        'Content-Type' => 'text/xml',
+        'Content-Length' => "#{body.length}"
       }
     end
 
