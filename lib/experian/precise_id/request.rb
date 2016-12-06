@@ -3,8 +3,8 @@ module Experian
     class Request < Experian::Request
       def build_request
         super do |xml|
-          xml.tag!('EAI', Experian.eai)
-          xml.tag!('DBHost', PreciseId.db_host)
+          # xml.tag!('EAI', Experian.eai)
+          # xml.tag!('DBHost', PreciseId.db_host)
           add_reference_id(xml)
           xml.tag!('Request') do
             xml.tag!('Products') do
@@ -21,7 +21,7 @@ module Experian
       end
 
       def add_request_content(xml)
-        raise "sub classes must override this method"
+        raise 'sub classes must override this method'
       end
     end
   end
