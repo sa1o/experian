@@ -2,11 +2,11 @@ module Experian
   module PreciseId
     class Response < Experian::Response
       def success?
-        super && has_precise_id_section? && !error?
+        has_precise_id_section? && !error?
       end
 
       def error?
-        super || !has_precise_id_section? || has_error_section?
+        !has_precise_id_section? || has_error_section?
       end
 
       def error_code
