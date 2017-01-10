@@ -43,6 +43,11 @@ module Experian
         hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Summary', 'FinalDecision')
       end
 
+      def ssn
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer',
+         'Summary', 'PreciseMatch', 'Summary', 'Counts', 'SSNFinderReturnCount')
+      end
+
       def accept_refer_code
         hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'KBAScore', 'ScoreSummary', 'AcceptReferCode')
       end
