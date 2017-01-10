@@ -45,7 +45,7 @@ module Experian
 
       def ssn
         hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer',
-         'Summary', 'PreciseMatch', 'Summary', 'Counts', 'SSNFinderReturnCount')
+          'PreciseMatch', 'SSNFinder', 'Summary', 'Counts', 'SSNFinderReturnCount')
       end
 
       def accept_refer_code
