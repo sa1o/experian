@@ -35,6 +35,10 @@ module Experian
         hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Summary', 'Scores', 'PreciseIDScore')
       end
 
+      def match_score
+        hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'PreciseMatch', 'PreciseMatchScore')
+      end
+
       def initial_decision
         hash_path(@response, 'FraudSolutions', 'Response', 'Products', 'PreciseIDServer', 'Summary', 'InitialDecision')
       end
