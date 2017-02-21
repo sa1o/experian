@@ -6,7 +6,7 @@ module Experian
 
     PASSWORD_RESET_URL = "https://ss3.experian.com/securecontrol/reset/passwordreset"
     
-    PRECISE_ID_URL = "https://ss3.experian.com/fraudsolutions/xmlgateway/preciseid"
+    PRECISE_ID_URL = "https://sgw1.experian.com/fraudsolutions/xmlgateway/preciseid"
     # PRECISE_ID_TEST_URL = "https://dm2.experian.com/fraudsolutions/xmlgateway/preciseid"
     PRECISE_ID_TEST_URL = "https://dm-sgw1.experian.com/fraudsolutions/xmlgateway/preciseid"
 
