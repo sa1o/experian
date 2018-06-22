@@ -5,8 +5,9 @@ module Experian
     ECALS_TIMEOUT = 86400 # 24 hours in seconds
 
     PASSWORD_RESET_URL = "https://ss3.experian.com/securecontrol/reset/passwordreset"
-    
-    PRECISE_ID_URL = "https://sgw1.experian.com/fraudsolutions/xmlgateway/preciseid"
+
+    PRECISE_ID_URL = "https://pid-sgw.secure.experian.com/fraudsolutions/xmlgateway/preciseid"
+    # PRECISE_ID_URL = "https://sgw1.experian.com/fraudsolutions/xmlgateway/preciseid"
     # PRECISE_ID_TEST_URL = "https://dm2.experian.com/fraudsolutions/xmlgateway/preciseid"
     PRECISE_ID_TEST_URL = "https://dm-sgw1.experian.com/fraudsolutions/xmlgateway/preciseid"
 
